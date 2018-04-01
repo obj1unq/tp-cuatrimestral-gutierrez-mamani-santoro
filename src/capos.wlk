@@ -12,7 +12,7 @@ object rolando{
 	}
 	method obtenerArtefacto(_artefacto){
 		artefactos.add(_artefacto)
-		}
+    }
 	method valorHechizeria()=baseHechizeria+artefactos.sum({artefacto=>artefacto.estadisticaHechizeria(self)})
 	method valorLucha()=baseLucha+artefactos.sum({artefacto=>artefacto.estadisticaLucha(self)})
 }
