@@ -1,3 +1,4 @@
+//OBJECT ROLANDO
 object rolando{
 	var baseHechizeria=1
 	var baseLucha=3
