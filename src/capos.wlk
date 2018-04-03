@@ -28,3 +28,33 @@ object collarDivino{
 	method estadisticaHechizeria(capo)=1
 	method estadisticaLucha(capo)=1
 }
+
+
+//2.1 Emiliano
+object armadura {
+	var property refuerzo = cotaDeMalla
+	
+	method estadisticaHechizeria(capo) = refuerzo.estadisticaHechizeria(capo)
+	method estadiscticaLucha (capo) = 2 + refuerzo.estadisticaLucha(capo)
+	
+}
+
+object cotaDeMalla {
+	
+	method estadisticaHechizeria(capo) =  0
+	method estadisticaLucha(capo) = 1
+}
+
+object bendicion {
+	
+	method estadisticaHechizeria(capo) =  1
+	method estadisticaLucha(capo) = 0
+}
+
+object hechizo {
+	method estadisticaHechizeria(capo) = if (capo.valorHechizeria() > 3 ) {2}
+}
+
+
+
+
