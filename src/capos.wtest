@@ -20,3 +20,12 @@ test "mas fuerza base y distinto orden de los artefactos" {
 	assert.equals(2,rolando.valorHechizeria())
 	
 }
+test "ej del punto2.2" {
+	
+	rolando.incrementarValorBaseHechizeria()
+	rolando.obtenerArtefacto(collarDivino)
+	rolando.obtenerArtefacto(libroHechizos)
+	rolando.obtenerArtefacto(espadaDestino)
+    assert.equals(espadaDestino,rolando.mejorArtefacto())
+	
+}
