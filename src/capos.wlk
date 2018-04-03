@@ -14,6 +14,7 @@ object rolando{
 	method obtenerArtefacto(_artefacto){
 		artefactos.add(_artefacto)
     }
+    //prueba
     method mejorArtefacto()=
        self.artefactosObtenidos().max
         ({artefacto=>artefacto.estadisticaHechizeria(self)+ artefacto.estadisticaLucha(self)})
