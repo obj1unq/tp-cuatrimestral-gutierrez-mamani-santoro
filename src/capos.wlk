@@ -96,7 +96,7 @@ object bandoDelSur{
 	}
 
 }
-//ELementos
+//ELementos"
 object cofrecitoDeOro{
 	method incrementarValor(capo){
 		capo.bando().incrementarTesoro(100)
