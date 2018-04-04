@@ -34,6 +34,7 @@ object rolando{
 	method bando()= bandoDelSur
 	
 	method encontrarElemento(unElemento){
+		if(#{unElemento}.contains(viejoSabio)){self.obtenerArtefacto(unElemento)}else
 		unElemento.incrementarValor(self)
 	}
 	
@@ -111,9 +112,8 @@ object cumuloDeCarbon{
 }
 
 object viejoSabio{
-    method  incrementarValor(capo) {
-    	capo.incrementarValorBaseHechizeria()
-    	capo.incrementarValorBaseLucha()
-    }
+    	method estadisticaHechizeria(capo)=1
+	    method estadisticaLucha(capo)=1
+ 
      
 }
