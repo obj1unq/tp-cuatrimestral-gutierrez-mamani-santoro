@@ -3,6 +3,7 @@ object rolando{
 	var baseHechizeria=1
 	var baseLucha=3
     var artefactos=#{}
+    
 	method valorBaseHechizeria()=baseHechizeria
 	method valorBaseLucha()=baseLucha
 	method artefactosObtenidos()=artefactos
@@ -25,8 +26,18 @@ object rolando{
        self.artefactosObtenidos().filter({artefacto=>artefacto!=espejoDivino}).max
         ({artefacto=>artefacto.estadisticaHechizeria(self)+ artefacto.estadisticaLucha(self)})
             else espejoDivino
+            
 	method valorHechizeria()=baseHechizeria+artefactos.sum({artefacto=>artefacto.estadisticaHechizeria(self)})
 	method valorLucha()=baseLucha+artefactos.sum({artefacto=>artefacto.estadisticaLucha(self)})
+	
+	//3
+	method bando()= bandoDelSur
+	
+	method encontrarElemento(unElemento){
+		unElemento.incrementarValor(self)
+	}
+	
+	
 }
 //Artefactos
 object espadaDestino{
@@ -68,6 +79,41 @@ object hechizo{
 	method refuerzoLucha(capo)=0
 }
 
+//Punto 3
+object bandoDelSur{
+	var tesoro =0
+	var reservas = 0
+	
+	method tesoro() = tesoro
+	
+	method reserva() = reservas
+	
+	method incrementarTesoro(unaCantidad){
+		tesoro +=unaCantidad
+	}
+	method incrementarReserva(unaCantidad){
+		reservas += unaCantidad
+	}
+
+}
+//ELementos
+object cofrecitoDeOro{
+	method incrementarValor(capo){
+		capo.bando().incrementarTesoro(100)
+	   }
+	}
 
 
+object cumuloDeCarbon{
+	method incrementarValor(capo) {
+	 capo.bando().incrementarReserva(50)  
+	 }
+}
 
+object viejoSabio{
+    method  incrementarValor(capo) {
+    	capo.incrementarValorBaseHechizeria()
+    	capo.incrementarValorBaseLucha()
+    }
+     
+}
