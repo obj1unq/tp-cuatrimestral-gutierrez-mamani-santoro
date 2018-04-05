@@ -26,6 +26,62 @@ test "ej del punto2.2" {
 	rolando.obtenerArtefacto(collarDivino)
 	rolando.obtenerArtefacto(libroHechizos)
 	rolando.obtenerArtefacto(espadaDestino)
-    assert.equals(espadaDestino,rolando.mejorArtefacto())
+    assert.equals(espadaDestino,rolando.mejorArtefacto(espejoDivino))
 	
+}
+test "testeo del punto 2.2 sobre el valor de hechizeria" {
+	
+	rolando.incrementarValorBaseHechizeria()
+	rolando.obtenerArtefacto(collarDivino)
+	rolando.obtenerArtefacto(libroHechizos)
+	rolando.obtenerArtefacto(espadaDestino)
+    rolando.obtenerArtefacto(espejoDivino)
+    assert.equals(5,rolando.valorHechizeria())
+    
+}
+test "testeo del punto 2.2 sobre el valor de lucha" {
+	
+	rolando.incrementarValorBaseHechizeria()
+	rolando.obtenerArtefacto(collarDivino)
+	rolando.obtenerArtefacto(libroHechizos)
+	rolando.obtenerArtefacto(espadaDestino)
+    rolando.obtenerArtefacto(espejoDivino)
+    assert.equals(10,rolando.valorLucha())
+    
+}
+test "testeo del punto 2.2 con la armadura con el hechizo viendo el valor hechizeria final cuando de base tiene 4" {
+	
+	rolando.incrementarValorBaseHechizeria()
+	rolando.incrementarValorBaseHechizeria()
+	rolando.incrementarValorBaseHechizeria()
+	armadura.refuerzo(hechizo)
+	rolando.obtenerArtefacto(armadura)
+	rolando.obtenerArtefacto(espadaDestino)
+	rolando.obtenerArtefacto(espejoDivino)
+    assert.equals(8,rolando.valorHechizeria())
+    
+}
+test "testeo del punto 2.2 con la armadura viendo el valor lucha" {
+	
+	rolando.incrementarValorBaseHechizeria()
+	armadura.refuerzo(hechizo)
+	rolando.obtenerArtefacto(armadura)
+	rolando.obtenerArtefacto(espadaDestino)
+	rolando.obtenerArtefacto(espejoDivino)
+    assert.equals(11,rolando.valorLucha())
+    
+}
+test "rolando y el viejo sabio" {
+	
+	rolando.encontrarElemento(viejoSabio)
+	rolando.obtenerArtefacto(espadaDestino)
+    assert.equals(7,rolando.valorLucha())
+    
+}
+test "la banda obtiene cash" {
+	
+	rolando.encontrarElemento(cofrecitoDeOro)
+	rolando.encontrarElemento(cofrecitoDeOro)
+    assert.equals(200,bandoDelSur.tesoro())
+    
 }

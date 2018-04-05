@@ -47,7 +47,7 @@ object collarDivino{
 }
 object armadura{
 	var property refuerzo=cotaMalla
-	method estadisticaHechizeria(capo)=0+ if(refuerzo==null) 0 else refuerzo.estadisticaHechizeria(capo)
+	method estadisticaHechizeria(capo)=if(refuerzo==null) 0 else refuerzo.estadisticaHechizeria(capo)
 	method estadisticaLucha(capo)=2+ if(refuerzo==null) 0 else refuerzo.estadisticaLucha(capo)
 }
 object espejoDivino{
@@ -64,12 +64,12 @@ object cotaMalla{
 	method estadisticaLucha(capo)=1
 }
 object bendicion{
-	method refuerzoHechizeria(capo)=1
-	method refuerzoLucha(capo)=0
+	method estadisticaHechizeria(capo)=1
+	method estadisticaLucha(capo)=0
 }
 object hechizo{
-	method refuerzoHechizeria(capo)=if(capo.valorBaseHechizeria()>3) 2
-	method refuerzoLucha(capo)=0
+	method estadisticaHechizeria(capo)=if(capo.valorBaseHechizeria()>3) 2 else 0
+	method estadisticaLucha(capo)=0
 }
 
 //Punto 3
