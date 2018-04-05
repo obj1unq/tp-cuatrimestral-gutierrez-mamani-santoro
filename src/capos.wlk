@@ -16,29 +16,21 @@ object rolando{
 	method obtenerArtefacto(_artefacto){
 		artefactos.add(_artefacto)
     }
-    method sinEspejo(){
-    	var lisSinEspejo=self.artefactosObtenidos()
-    	   lisSinEspejo.remove(espejoDivino)
-    		return lisSinEspejo
-    }
+    method valorHechizeria()=baseHechizeria+artefactos.sum({artefacto=>artefacto.estadisticaHechizeria(self)})
+	method valorLucha()=baseLucha+artefactos.sum({artefacto=>artefacto.estadisticaLucha(self)})
+    //2
     method mejorArtefacto(espejoDivino)=
      if(! self.artefactosObtenidos().contains(espejoDivino) or self.artefactosObtenidos().size()>=2 )
        self.artefactosObtenidos().filter({artefacto=>artefacto!=espejoDivino}).max
         ({artefacto=>artefacto.estadisticaHechizeria(self)+ artefacto.estadisticaLucha(self)})
             else espejoDivino
-            
-	method valorHechizeria()=baseHechizeria+artefactos.sum({artefacto=>artefacto.estadisticaHechizeria(self)})
-	method valorLucha()=baseLucha+artefactos.sum({artefacto=>artefacto.estadisticaLucha(self)})
-	
+       	
 	//3
 	method bando()= bandoDelSur
 	
 	method encontrarElemento(unElemento){
-		if(#{unElemento}.contains(viejoSabio)){self.obtenerArtefacto(unElemento)}else
 		unElemento.incrementarValor(self)
 	}
-	
-	
 }
 //Artefactos
 object espadaDestino{
@@ -95,25 +87,21 @@ object bandoDelSur{
 	method incrementarReserva(unaCantidad){
 		reservas += unaCantidad
 	}
-
 }
-//ELementos"
+//Elementos
 object cofrecitoDeOro{
 	method incrementarValor(capo){
 		capo.bando().incrementarTesoro(100)
 	   }
 	}
-
-
 object cumuloDeCarbon{
 	method incrementarValor(capo) {
 	 capo.bando().incrementarReserva(50)  
 	 }
 }
-
 object viejoSabio{
-    	method estadisticaHechizeria(capo)=1
-	    method estadisticaLucha(capo)=1
- 
-     
+	    method incrementarValor(capo){
+        capo.incrementarValorBaseHechizeria()
+	    capo.incrementarValorBaseLucha()
+       }
 }
