@@ -74,7 +74,7 @@ object hechizo{
 	method estadisticaLucha(capo)=0
 }
 
-//Punto 3
+//Bando de rolando
 object bandoDelSur{
 	var tesoro =0
 	var reservas = 0
