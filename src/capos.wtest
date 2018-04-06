@@ -1,6 +1,6 @@
 import capos.*
 
-test "ej del punto1" {
+test "rolando incrementa su valor de base de hechiceria y obtiene artefactos" {
 	
 	rolando.incrementarValorBaseHechizeria()
 	rolando.obtenerArtefacto(collarDivino)
@@ -10,7 +10,7 @@ test "ej del punto1" {
 	assert.equals(5,rolando.valorHechizeria())
 	
 }
-test "mas fuerza base y distinto orden de los artefactos" {
+test "rolando aumenta sus puntos de fuerza base y obtiene artefactos" {
 	
 	rolando.incrementarValorBaseLucha()
 	rolando.incrementarValorBaseLucha()
@@ -20,7 +20,7 @@ test "mas fuerza base y distinto orden de los artefactos" {
 	assert.equals(2,rolando.valorHechizeria())
 	
 }
-test "ej del punto2.2" {
+test "el mejor artefacto de rolando sin tener en cuenta el espejo divino" {
 	
 	rolando.incrementarValorBaseHechizeria()
 	rolando.obtenerArtefacto(collarDivino)
@@ -29,7 +29,7 @@ test "ej del punto2.2" {
     assert.equals(espadaDestino,rolando.mejorArtefacto(espejoDivino))
 	
 }
-test "testeo del punto 2.2 sobre el valor de hechizeria" {
+test "rolando incrementa su valor base de hechiceria y incrementa su valor hechiceria con artefactos obtenitos" {
 	
 	rolando.incrementarValorBaseHechizeria()
 	rolando.obtenerArtefacto(collarDivino)
@@ -39,7 +39,7 @@ test "testeo del punto 2.2 sobre el valor de hechizeria" {
     assert.equals(5,rolando.valorHechizeria())
     
 }
-test "testeo del punto 2.2 sobre el valor de lucha" {
+test "rolando incrementa su valor base de hechiceria y incremeta su valor lucha con artefactos obtenidos" {
 	
 	rolando.incrementarValorBaseHechizeria()
 	rolando.obtenerArtefacto(collarDivino)
@@ -80,7 +80,7 @@ test "rolando encuentra un viejo sabio" {
     //assert.equals(7,rolando.valorLucha())
     
 }
-test "rolando encuentra 2 cofrecitos de oro" {
+test "rolando encuentra 2 cofrecitos de oro y le suma 200 al tesoro del sur " {
 	
 	rolando.encontrarElemento(cofrecitoDeOro)
 	rolando.encontrarElemento(cofrecitoDeOro)
@@ -94,4 +94,13 @@ test "rolando encuentra 2 cumulos de carbon" {
 	rolando.encontrarElemento(cumuloDeCarbon)
     assert.equals(100,bandoDelSur.reserva())
     
+}
+
+
+test "rolando encuentra 1 cofecito de oror y un cumulo de carbon "{
+	rolando.encontrarElemento(cofrecitoDeOro)
+	rolando.encontrarElemento(cumuloDeCarbon)
+	assert.equals(50,bandoDelSur.reserva())
+	assert.equals(100,bandoDelSur.tesoro())
+	
 }
