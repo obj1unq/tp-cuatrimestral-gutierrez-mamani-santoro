@@ -71,17 +71,27 @@ test "testeo del punto 2.2 con la armadura viendo el valor lucha" {
     assert.equals(11,rolando.valorLucha())
     
 }
-test "rolando y el viejo sabio" {
+test "rolando encuentra un viejo sabio" {
 	
 	rolando.encontrarElemento(viejoSabio)
-	rolando.obtenerArtefacto(espadaDestino)
-    assert.equals(7,rolando.valorLucha())
+	assert.equals(rolando.valorBaseHechizeria(),2)
+	assert.equals(rolando.valorBaseLucha(),4)
+	//rolando.obtenerArtefacto(espadaDestino)
+    //assert.equals(7,rolando.valorLucha())
     
 }
-test "la banda obtiene cash" {
+test "rolando encuentra 2 cofrecitos de oro" {
 	
 	rolando.encontrarElemento(cofrecitoDeOro)
 	rolando.encontrarElemento(cofrecitoDeOro)
     assert.equals(200,bandoDelSur.tesoro())
+    
+}
+
+test "rolando encuentra 2 cumulos de carbon" {
+	
+	rolando.encontrarElemento(cumuloDeCarbon)
+	rolando.encontrarElemento(cumuloDeCarbon)
+    assert.equals(100,bandoDelSur.reserva())
     
 }

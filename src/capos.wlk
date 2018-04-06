@@ -19,7 +19,8 @@ object rolando{
     method valorHechizeria()=baseHechizeria+artefactos.sum({artefacto=>artefacto.estadisticaHechizeria(self)})
 	method valorLucha()=baseLucha+artefactos.sum({artefacto=>artefacto.estadisticaLucha(self)})
     //2
-    method mejorArtefacto(espejoDivino)=
+    method mejorArtefacto(espejoDivino)= 
+    // excluye el espejo divino de los artefactos, a menos que sea el unico artefacto
      if(! self.artefactosObtenidos().contains(espejoDivino) or self.artefactosObtenidos().size()>=2 )
        self.artefactosObtenidos().filter({artefacto=>artefacto!=espejoDivino}).max
         ({artefacto=>artefacto.estadisticaHechizeria(self)+ artefacto.estadisticaLucha(self)})
@@ -51,6 +52,7 @@ object armadura{
 	method estadisticaLucha(capo)=2+ if(refuerzo==null) 0 else refuerzo.estadisticaLucha(capo)
 }
 object espejoDivino{
+	// devuelve las estadisticas del mejor artefacto, si solo tiene el espejo devuelve 0
 	method estadisticaHechizeria(capo)=
 	   if(capo.artefactosObtenidos().size()==1 and capo.artefactosObtenidos().contains(self)) 0 
 	   else capo.mejorArtefacto(self).estadisticaHechizeria(capo)
