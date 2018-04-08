@@ -8,18 +8,28 @@ object rolando{
 	method valorBaseLucha()=baseLucha
 	method artefactosObtenidos()=artefactos
 	method incrementarValorBaseHechizeria(){
+		//Aumenta el valor base hechizeria en 1
 		baseHechizeria+=1
 	}
 	method incrementarValorBaseLucha(){
+		//Aumenta el valor base lucha en 1
 		baseLucha+=1
 	}
 	method obtenerArtefacto(_artefacto){
+		//agrega un artefacto al conjunto de artefactos
 		artefactos.add(_artefacto)
     }
+    
+    //devuelve el valor base de hechizeria mas los puntos de hechizeria aportados por los artefactos
     method valorHechizeria()=baseHechizeria+artefactos.sum({artefacto=>artefacto.estadisticaHechizeria(self)})
+    
+    //devuelve el valor base de lucha mas los puntos de lucha aportados por los artefactos
 	method valorLucha()=baseLucha+artefactos.sum({artefacto=>artefacto.estadisticaLucha(self)})
     //2
+    
+    
     method mejorArtefacto(espejoDivino)= 
+    //devuelve el artefacto que aporta mas puntos de lucha y hechizeria combinados
     // excluye el espejo divino de los artefactos, a menos que sea el unico artefacto
      if(! self.artefactosObtenidos().contains(espejoDivino) or self.artefactosObtenidos().size()>=2 )
        self.artefactosObtenidos().filter({artefacto=>artefacto!=espejoDivino}).max
@@ -33,6 +43,7 @@ object rolando{
 		unElemento.incrementarValor(self)
 	}
 }
+
 //Artefactos
 object espadaDestino{
 	method estadisticaHechizeria(capo)=0
@@ -70,6 +81,7 @@ object bendicion{
 	method estadisticaLucha(capo)=0
 }
 object hechizo{
+	//Si el valor base de hechizeria del capo es mayor a 3 devuelve 2, en otro caso 0
 	method estadisticaHechizeria(capo)=if(capo.valorBaseHechizeria()>3) 2 else 0
 	method estadisticaLucha(capo)=0
 }
@@ -102,6 +114,7 @@ object cumuloDeCarbon{
 	 }
 }
 object viejoSabio{
+	//incrementa los valores base de lucha y hechizeria en 1
 	    method incrementarValor(capo){
         capo.incrementarValorBaseHechizeria()
 	    capo.incrementarValorBaseLucha()
