@@ -28,13 +28,7 @@ object rolando{
     //2
     
     
-    method mejorArtefacto(espejoDivino)= 
-    //devuelve el artefacto que aporta mas puntos de lucha y hechizeria combinados
-    // excluye el espejo divino de los artefactos, a menos que sea el unico artefacto
-     if(! self.artefactosObtenidos().contains(espejoDivino) or self.artefactosObtenidos().size()>=2 )
-       self.artefactosObtenidos().filter({artefacto=>artefacto!=espejoDivino}).max
-        ({artefacto=>artefacto.estadisticaHechizeria(self)+ artefacto.estadisticaLucha(self)})
-            else espejoDivino
+    
        	
 	//3
 	method bando()= bandoDelSur
@@ -63,13 +57,21 @@ object armadura{
 	method estadisticaLucha(capo)=2+ if(refuerzo==null) 0 else refuerzo.estadisticaLucha(capo)
 }
 object espejoDivino{
+	method mejorArtefacto(capo)= 
+    //devuelve el artefacto que aporta mas puntos de lucha y hechizeria combinados
+    // excluye el espejo divino de los artefactos, a menos que sea el unico artefacto
+     if(! capo.artefactosObtenidos().contains(self) or capo.artefactosObtenidos().size()>=2 )
+       capo.artefactosObtenidos().filter({artefacto=>artefacto!=self}).max
+        ({artefacto=>artefacto.estadisticaHechizeria(capo)+ artefacto.estadisticaLucha(capo)})
+            else self
+	
 	// devuelve las estadisticas del mejor artefacto, si solo tiene el espejo devuelve 0
 	method estadisticaHechizeria(capo)=
 	   if(capo.artefactosObtenidos().size()==1 and capo.artefactosObtenidos().contains(self)) 0 
-	   else capo.mejorArtefacto(self).estadisticaHechizeria(capo)
+	   else self.mejorArtefacto(capo).estadisticaHechizeria(capo)
 	method estadisticaLucha(capo)=
 	  if(capo.artefactosObtenidos().size()==1 and capo.artefactosObtenidos().contains(self)) 0 
-	   else capo.mejorArtefacto(self).estadisticaLucha(capo)
+	   else self.mejorArtefacto(capo).estadisticaLucha(capo)
 }
 //Refuerzos armadura
 object cotaMalla{

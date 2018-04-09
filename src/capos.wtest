@@ -20,15 +20,9 @@ test "rolando aumenta sus puntos de fuerza base y obtiene artefactos" {
 	assert.equals(2,rolando.valorHechizeria())
 	
 }
-test "el mejor artefacto de rolando sin tener en cuenta el espejo divino" {
+
 	
-	rolando.incrementarValorBaseHechizeria()
-	rolando.obtenerArtefacto(collarDivino)
-	rolando.obtenerArtefacto(libroHechizos)
-	rolando.obtenerArtefacto(espadaDestino)
-    assert.equals(espadaDestino,rolando.mejorArtefacto(espejoDivino))
-	
-}
+
 test "rolando incrementa su valor base de hechiceria y incrementa su valor hechiceria con artefactos obtenitos" {
 	
 	rolando.incrementarValorBaseHechizeria()
