@@ -20,7 +20,7 @@ test "rolando aumenta sus puntos de fuerza base y obtiene artefactos" {
 	assert.equals(2,rolando.valorHechizeria())
 	
 }
-
+//
 	
 
 test "rolando incrementa su valor base de hechiceria y incrementa su valor hechiceria con artefactos obtenitos" {

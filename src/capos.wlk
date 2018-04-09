@@ -1,4 +1,4 @@
-//OBJECT ROLANDO
+//OBJECT  ROLANDO
 object rolando{
 	var baseHechizeria=1
 	var baseLucha=3
@@ -116,7 +116,7 @@ object cumuloDeCarbon{
 	 }
 }
 object viejoSabio{
-	//incrementa los valores base de lucha y hechizeria en 1
+	//incrementa los valores base de lucha y hechizeria por 1
 	    method incrementarValor(capo){
         capo.incrementarValorBaseHechizeria()
 	    capo.incrementarValorBaseLucha()
