@@ -67,10 +67,11 @@ object espejoDivino{
 	
 	// devuelve las estadisticas del mejor artefacto, si solo tiene el espejo devuelve 0
 	method estadisticaHechizeria(capo)=
-	   if(capo.artefactosObtenidos().size()==1 and capo.artefactosObtenidos().contains(self)) 0 
+	   if(self.mejorArtefacto(capo)==self) 0 
 	   else self.mejorArtefacto(capo).estadisticaHechizeria(capo)
+	   
 	method estadisticaLucha(capo)=
-	  if(capo.artefactosObtenidos().size()==1 and capo.artefactosObtenidos().contains(self)) 0 
+	  if(self.mejorArtefacto(capo)==self) 0 
 	   else self.mejorArtefacto(capo).estadisticaLucha(capo)
 }
 //Refuerzos armadura
