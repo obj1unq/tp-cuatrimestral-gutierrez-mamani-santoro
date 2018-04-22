@@ -1,3 +1,5 @@
+//CORRECCION: Nota MB. Se marean un poco con el espejo, se puede mejorar esa parte del código.
+
 //OBJECT  ROLANDO
 object rolando{
 	var baseHechizeria=1
@@ -53,6 +55,8 @@ object collarDivino{
 }
 object armadura{
 	var property refuerzo=cotaMalla
+	//CORRECCION: Una manera de evitar el if null es haciendo un objeto que represente  el "no refuerzo"
+	//CORRECCION: ese es un refuerzo como los demás que devuelve 0 cuando le preguntan los valores
 	method estadisticaHechizeria(capo)=if(refuerzo==null) 0 else refuerzo.estadisticaHechizeria(capo)
 	method estadisticaLucha(capo)=2+ if(refuerzo==null) 0 else refuerzo.estadisticaLucha(capo)
 }
@@ -60,6 +64,7 @@ object espejoDivino{
 	method mejorArtefacto(capo)= 
     //devuelve el artefacto que aporta mas puntos de lucha y hechizeria combinados
     // excluye el espejo divino de los artefactos, a menos que sea el unico artefacto
+    //CORRECCION: Si se hace la pregunta correcta antes de llamar al mejor artefacto, el if se vuelve innecesario
      if(! capo.artefactosObtenidos().contains(self) or capo.artefactosObtenidos().size()>=2 )
        capo.artefactosObtenidos().filter({artefacto=>artefacto!=self}).max
         ({artefacto=>artefacto.estadisticaHechizeria(capo)+ artefacto.estadisticaLucha(capo)})
@@ -67,6 +72,8 @@ object espejoDivino{
 	
 	// devuelve las estadisticas del mejor artefacto, si solo tiene el espejo devuelve 0
 	method estadisticaHechizeria(capo)=
+	//CORRECCION: Están usando self como un flag para decir "no hay mejor artefacto". 
+	//CORRECCION: más prolijo es preguntar exactmente eso: "si tiene artefactos (sin incluir self) entonces.."
 	   if(self.mejorArtefacto(capo)==self) 0 
 	   else self.mejorArtefacto(capo).estadisticaHechizeria(capo)
 	   
