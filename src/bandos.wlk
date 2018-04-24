@@ -24,7 +24,10 @@ class CumuloDeCarbon{
 	 }
 }
 object neblina{
-	
+ var elementosOcultos = []
+  method efecto(capo){
+  	  elementosOcultos.forEach({elemento=>capo.encontrarElemento(elemento)})
+  }
 }
 object viejoSabio{
 	    method efecto(capo){
