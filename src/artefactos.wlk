@@ -20,12 +20,11 @@ object collarDivino{
 		capo.obtenerArtefacto(self)
 	}
 }
-object armadura{
+class Armadura{
 	var property refuerzo=cotaMalla
-	//CORRECCION: Una manera de evitar el if null es haciendo un objeto que represente  el "no refuerzo".Arreglado
-	//CORRECCION: ese es un refuerzo como los demás que devuelve 0 cuando le preguntan los valores.Arreglado
 	method estadisticaHechizeria(capo)=refuerzo.estadisticaHechizeria(capo)
 	method estadisticaLucha(capo)=2+ refuerzo.estadisticaLucha(capo)
+	
 	method efecto(capo){
 		capo.obtenerArtefacto(self)
 	}

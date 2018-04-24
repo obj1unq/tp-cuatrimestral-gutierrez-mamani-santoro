@@ -29,9 +29,15 @@ object neblina{
   	  elementosOcultos.forEach({elemento=>capo.encontrarElemento(elemento)})
   }
 }
-object viejoSabio{
+class ViejoSabio{
+	var puntosLucha = 1
 	    method efecto(capo){
-        capo.incrementarValorBaseHechizeria()
-	    capo.incrementarValorBaseLucha()
+        capo.incrementarValorBaseHechizeria(ayudanteSabio.ayuda())
+        
+	    capo.incrementarValorBaseLucha(puntosLucha)
        }
+}
+
+object ayudanteSabio{
+	var property ayuda = 1
 }

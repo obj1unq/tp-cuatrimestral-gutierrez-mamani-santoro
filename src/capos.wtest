@@ -8,10 +8,15 @@ describe "tp1"{
 	var rolando = new Capos(bando=bandoDelSur,baseHechizeria=3,baseLucha=1)
 	var caterina= new Capos(bando=bandoDelSur,baseHechizeria=1,baseLucha=2)
 	var archibaldo= new Capos(bando=bandoDelNorte,baseHechizeria=3,baseLucha=3)
+	var armaduraBendecida = new Armadura (refuerzo = bendicion)
+	var armaduraCotaDeMalla = new Armadura (refuerzo = cotaMalla)
+	var armaduraHechizada = new Armadura (refuerzo = bendicion)
+	var armaduraNormal = new Armadura (refuerzo = noRefuerzo)
+	var viejoSabio = new ViejoSabio (puntosLucha = 1)
+	var viejaSabia = new ViejoSabio (puntosLucha = 2)
 	var cofrecitoDeOro = new CofrecitoDeOro(valor = 100)
 	var cumuloDeCarbon = new CumuloDeCarbon()
 	var cofrecitoDeOro1= new CofrecitoDeOro(valor = 200)
-	
 fixture{
 	caterina.encontrarElemento(espadaDestino)
 	archibaldo.encontrarElemento(collarDivino)
@@ -20,81 +25,77 @@ fixture{
 
 test "rolando incrementa su valor de base de hechiceria y obtiene artefactos" {
 	
-	rolando.incrementarValorBaseHechizeria()
+	rolando.incrementarValorBaseHechizeria(1)
 	rolando.obtenerArtefacto(collarDivino)
 	rolando.obtenerArtefacto(libroHechizos)
 	rolando.obtenerArtefacto(espadaDestino)
-	assert.equals(7,rolando.valorLucha())
-	assert.equals(5,rolando.valorHechizeria())
+	assert.equals(5,rolando.valorLucha())
+	assert.equals(9,rolando.valorHechizeria())
 	
 }
 test "rolando aumenta sus puntos de fuerza base y obtiene artefactos" {
 	
-	rolando.incrementarValorBaseLucha()
-	rolando.incrementarValorBaseLucha()
+	rolando.incrementarValorBaseLucha(1)
+	rolando.incrementarValorBaseLucha(1)
     rolando.obtenerArtefacto(espadaDestino)
 	rolando.obtenerArtefacto(collarDivino)
-	assert.equals(9,rolando.valorLucha())
-	assert.equals(2,rolando.valorHechizeria())
+	assert.equals(7,rolando.valorLucha())
+	assert.equals(4,rolando.valorHechizeria())
 	
 }
 
 test "rolando incrementa su valor base de hechiceria y incrementa su valor hechiceria con artefactos obtenitos" {
 	
-	rolando.incrementarValorBaseHechizeria()
+	rolando.incrementarValorBaseHechizeria(1)
 	rolando.obtenerArtefacto(collarDivino)
 	rolando.obtenerArtefacto(libroHechizos)
 	rolando.obtenerArtefacto(espadaDestino)
     rolando.obtenerArtefacto(espejoDivino)
-    assert.equals(5,rolando.valorHechizeria())
+    assert.equals(13,rolando.valorHechizeria())
     
 }
 test "rolando incrementa su valor base de hechiceria y incremeta su valor lucha con artefactos obtenidos" {
 	
-	rolando.incrementarValorBaseHechizeria()
+	rolando.incrementarValorBaseHechizeria(1)
 	rolando.obtenerArtefacto(collarDivino)
 	rolando.obtenerArtefacto(libroHechizos)
 	rolando.obtenerArtefacto(espadaDestino)
     rolando.obtenerArtefacto(espejoDivino)
-    assert.equals(10,rolando.valorLucha())
+    assert.equals(5,rolando.valorLucha())
     
 }
 test "testeo del punto 2.2 con la armadura con el hechizo viendo el valor hechizeria final cuando de base tiene 4" {
 	
-	rolando.incrementarValorBaseHechizeria()
-	rolando.incrementarValorBaseHechizeria()
-	rolando.incrementarValorBaseHechizeria()
-	armadura.refuerzo(hechizo)
-	rolando.obtenerArtefacto(armadura)
+	rolando.incrementarValorBaseHechizeria(1)
+	rolando.incrementarValorBaseHechizeria(1)
+	rolando.incrementarValorBaseHechizeria(1)
+	rolando.obtenerArtefacto(armaduraBendecida)
 	rolando.obtenerArtefacto(espadaDestino)
 	rolando.obtenerArtefacto(espejoDivino)
-    assert.equals(8,rolando.valorHechizeria())
+    assert.equals(10,rolando.valorHechizeria())
     
 }
 test "testeo del punto 2.2 con la armadura viendo el valor lucha" {
 	
-	rolando.incrementarValorBaseHechizeria()
-	armadura.refuerzo(hechizo)
-	rolando.obtenerArtefacto(armadura)
+	rolando.incrementarValorBaseHechizeria(1)
+	rolando.obtenerArtefacto(armaduraHechizada)
 	rolando.obtenerArtefacto(espadaDestino)
 	rolando.obtenerArtefacto(espejoDivino)
-    assert.equals(11,rolando.valorLucha())
+    assert.equals(8,rolando.valorLucha())
     
 }
 test "rolando encuentra un viejo sabio" {
 	
 	rolando.encontrarElemento(viejoSabio)
-	assert.equals(rolando.valorBaseHechizeria(),2)
-	assert.equals(rolando.valorBaseLucha(),4)
-	//rolando.obtenerArtefacto(espadaDestino)
-    //assert.equals(7,rolando.valorLucha())
+	assert.equals(rolando.valorBaseHechizeria(),4)
+	assert.equals(rolando.valorBaseLucha(),2)
     
 }
 test "rolando encuentra 2 cofrecitos de oro y le suma 200 al tesoro del sur " {
 	
 	rolando.encontrarElemento(cofrecitoDeOro)
 	rolando.encontrarElemento(cofrecitoDeOro)
-    assert.equals(200,bandoDelSur.tesoro())
+    assert.equals(300,bandoDelSur.tesoro())
     
 }
 
@@ -102,7 +103,7 @@ test "rolando encuentra 2 cumulos de carbon" {
 	
 	rolando.encontrarElemento(cumuloDeCarbon)
 	rolando.encontrarElemento(cumuloDeCarbon)
-    assert.equals(100,bandoDelSur.reserva())
+    assert.equals(150,bandoDelSur.reserva())
     
 }
 
@@ -110,8 +111,8 @@ test "rolando encuentra 2 cumulos de carbon" {
 test "rolando encuentra 1 cofecito de oror y un cumulo de carbon "{
 	rolando.encontrarElemento(cofrecitoDeOro)
 	rolando.encontrarElemento(cumuloDeCarbon)
-	assert.equals(50,bandoDelSur.reserva())
-	assert.equals(100,bandoDelSur.tesoro())
+	assert.equals(100,bandoDelSur.reserva())
+	assert.equals(200,bandoDelSur.tesoro())
 	
 }
 test "rolando contra archibaldo"{
@@ -123,10 +124,37 @@ test "rolando encontro caterina"{
 	assert.equals(3,rolando.valorHechizeria())
 	assert.equals(4,rolando.valorLucha())
 }
-test "caterina encuentra dos cofrecitos de oro"{
-	caterina.encontrarElemento(cofrecitoDeOro)
-	caterina.encontrarElemento(cofrecitoDeOro1)
-	assert.equals(400,bandoDelSur.tesoro())
+
+test "rolando encuentra armadura bendecida"{
+	rolando.encontrarElemento(armaduraBendecida)
+	assert.equals(4,rolando.valorHechizeria())
+	assert.equals(3,rolando.valorLucha())
+}
+
+test "rolando encuentra armadura cota de malla"{
+	rolando.encontrarElemento(armaduraCotaDeMalla)
+	assert.equals(4,rolando.valorLucha())
+}
+
+test "rolando encuentra armadura hechizada"{
+	rolando.encontrarElemento(armaduraHechizada)
+	assert.equals(4,rolando.valorHechizeria())
+}
+
+test "rolando encuentra una de cada armadura"{
+	rolando.encontrarElemento(armaduraBendecida)
+	rolando.encontrarElemento(armaduraCotaDeMalla)
+	rolando.encontrarElemento(armaduraHechizada)
+	assert.equals(5, rolando.valorHechizeria())
+	assert.equals(8, rolando.valorLucha())
+}
+
+test "rolando encuentra dos viejos sabios con valor de lucha 2"{
+	rolando.encontrarElemento(viejoSabio)
+	rolando.encontrarElemento(viejaSabia)
+	assert.equals(4,rolando.valorLucha())
+	assert.equals(7, rolando.valorHechizeria())
+}
 }
 test "caterina se ecuentra una neblina"{
 	 caterina.encontrarElemento(neblina)
