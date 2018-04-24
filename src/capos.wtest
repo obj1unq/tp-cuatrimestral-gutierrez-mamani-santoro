@@ -102,8 +102,6 @@ test "rolando encuentra 2 cumulos de carbon" {
     assert.equals(150,bandoDelSur.reserva())
     
 }
-
-
 test "rolando encuentra 1 cofecito de oror y un cumulo de carbon "{
 	rolando.encontrarElemento(cofrecitoDeOro)
 	rolando.encontrarElemento(cumuloDeCarbon)
