@@ -8,6 +8,9 @@ describe "tp1"{
 	var rolando = new Capos(bando=bandoDelSur,baseHechizeria=3,baseLucha=1)
 	var caterina= new Capos(bando=bandoDelSur,baseHechizeria=1,baseLucha=2)
 	var archibaldo= new Capos(bando=bandoDelNorte,baseHechizeria=3,baseLucha=3)
+	var cofrecitoDeOro = new CofrecitoDeOro(valor = 100)
+	var cumuloDeCarbon = new CumuloDeCarbon()
+	var cofrecitoDeOro1= new CofrecitoDeOro(valor = 200)
 fixture{
 	caterina.encontrarElemento(espadaDestino)
 	archibaldo.encontrarElemento(collarDivino)
@@ -116,5 +119,10 @@ test "rolando encontro caterina"{
 	rolando.encontrarElemento(caterina)
 	assert.equals(3,rolando.valorHechizeria())
 	assert.equals(4,rolando.valorLucha())
+}
+test "caterina encuentra dos cofrecitos de oro"{
+	caterina.encontrarElemento(cofrecitoDeOro)
+	caterina.encontrarElemento(cofrecitoDeOro1)
+	assert.equals(400,bandoDelSur.tesoro())
 }
 }
