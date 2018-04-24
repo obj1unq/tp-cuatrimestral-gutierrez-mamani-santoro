@@ -8,6 +8,8 @@ describe "tp1"{
 	var rolando = new Capos(bando=bandoDelSur,baseHechizeria=3,baseLucha=1)
 	var caterina= new Capos(bando=bandoDelSur,baseHechizeria=1,baseLucha=2)
 	var archibaldo= new Capos(bando=bandoDelNorte,baseHechizeria=3,baseLucha=3)
+	var cofrecitoDeOro = new CofrecitoDeOro(valor = 200)
+	var cumuloDeCarbon = new CumuloDeCarbon()
 fixture{
 	caterina.encontrarElemento(espadaDestino)
 	archibaldo.encontrarElemento(collarDivino)
