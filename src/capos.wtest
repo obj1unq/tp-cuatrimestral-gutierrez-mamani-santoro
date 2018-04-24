@@ -1,4 +1,9 @@
 import capos.*
+import artefactos.*
+import refuerzosArmadura.*
+describe "tp1"{
+	var rolando= new Capos()
+}
 
 test "rolando incrementa su valor de base de hechiceria y obtiene artefactos" {
 	
@@ -12,7 +17,7 @@ test "rolando incrementa su valor de base de hechiceria y obtiene artefactos" {
 }
 test "rolando aumenta sus puntos de fuerza base y obtiene artefactos" {
 	
-	rolando.incrementarValorBaseLucha()
+	caposTotales.rolando().incrementarValorBaseLucha()
 	rolando.incrementarValorBaseLucha()
     rolando.obtenerArtefacto(espadaDestino)
 	rolando.obtenerArtefacto(collarDivino)
