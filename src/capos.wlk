@@ -11,11 +11,11 @@ class Capos{
 	method valorBaseHechizeria()=baseHechizeria
 	method valorBaseLucha()=baseLucha
 	method artefactosObtenidos()=artefactos
-	method incrementarValorBaseHechizeria(){
-		baseHechizeria+=1
+	method incrementarValorBaseHechizeria(num){
+		baseHechizeria+=num
 	}
-	method incrementarValorBaseLucha(){
-		baseLucha+=1
+	method incrementarValorBaseLucha(num){
+		baseLucha+=num
 	}
 	method obtenerArtefacto(_artefacto){
 		artefactos.add(_artefacto)
