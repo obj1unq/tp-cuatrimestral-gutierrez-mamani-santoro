@@ -35,7 +35,7 @@ object espejoDivino{
     //CORRECCION: Si se hace la pregunta correcta antes de llamar al mejor artefacto, el if se vuelve innecesario
        capo.artefactosObtenidos().filter({artefacto=>artefacto!=self}).max
         ({artefacto=>artefacto.estadisticaHechizeria(capo)+ artefacto.estadisticaLucha(capo)})
-           
+                   
 	method estadisticaHechizeria(capo)=
 	//CORRECCION: Están usando self como un flag para decir "no hay mejor artefacto". 
 	//CORRECCION: más prolijo es preguntar exactmente eso: "si tiene artefactos (sin incluir self) entonces.."
