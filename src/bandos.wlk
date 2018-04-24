@@ -23,6 +23,9 @@ class CumuloDeCarbon{
 	 capo.bando().incrementarReserva(50)  
 	 }
 }
+object neblina{
+	
+}
 object viejoSabio{
 	    method efecto(capo){
         capo.incrementarValorBaseHechizeria()
