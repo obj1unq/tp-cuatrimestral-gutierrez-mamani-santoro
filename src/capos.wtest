@@ -1,8 +1,17 @@
+import bandos.*
 import capos.*
 import artefactos.*
 import refuerzosArmadura.*
 describe "tp1"{
-	var rolando= new Capos()
+	var bandoDelSur= new Bando(tesoro=100,reservas=50)
+	var bandoDelNorte= new Bando(tesoro=200,reservas=200)
+	var rolando = new Capos(bando=bandoDelSur,baseHechizeria=3,baseLucha=1)
+	var caterina= new Capos(bando=bandoDelSur,baseHechizeria=1,baseLucha=2)
+	var archibaldo= new Capos(bando=bandoDelNorte,baseHechizeria=3,baseLucha=3)
+fixture{
+	caterina.encontrarElemento(espadaDestino)
+	archibaldo.encontrarElemento(collarDivino)
+    archibaldo.encontrarElemento(espejoDivino)
 }
 
 test "rolando incrementa su valor de base de hechiceria y obtiene artefactos" {
@@ -17,7 +26,7 @@ test "rolando incrementa su valor de base de hechiceria y obtiene artefactos" {
 }
 test "rolando aumenta sus puntos de fuerza base y obtiene artefactos" {
 	
-	caposTotales.rolando().incrementarValorBaseLucha()
+	rolando.incrementarValorBaseLucha()
 	rolando.incrementarValorBaseLucha()
     rolando.obtenerArtefacto(espadaDestino)
 	rolando.obtenerArtefacto(collarDivino)
@@ -25,8 +34,6 @@ test "rolando aumenta sus puntos de fuerza base y obtiene artefactos" {
 	assert.equals(2,rolando.valorHechizeria())
 	
 }
-//
-	
 
 test "rolando incrementa su valor base de hechiceria y incrementa su valor hechiceria con artefactos obtenitos" {
 	
@@ -102,4 +109,14 @@ test "rolando encuentra 1 cofecito de oror y un cumulo de carbon "{
 	assert.equals(50,bandoDelSur.reserva())
 	assert.equals(100,bandoDelSur.tesoro())
 	
+}
+test "rolando contra archibaldo"{
+	rolando.encontrarElemento(archibaldo)
+	assert.that(!rolando.estadoMio())
+}
+test "rolando encontro caterina"{
+	rolando.encontrarElemento(caterina)
+	assert.equals(3,rolando.valorHechizeria())
+	assert.equals(4,rolando.valorLucha())
+}
 }
