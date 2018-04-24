@@ -1,4 +1,5 @@
 import refuerzosArmadura.*
+
 object espadaDestino{
 	method estadisticaHechizeria(capo)=0
 	method estadisticaLucha(capo)=3
@@ -31,21 +32,25 @@ object armadura{
 	}
 }
 object espejoDivino{
-	method mejorArtefacto(capo)= 
+	method mejorArtefacto(capo) = 
     //CORRECCION: Si se hace la pregunta correcta antes de llamar al mejor artefacto, el if se vuelve innecesario
-     if(! capo.artefactosObtenidos().contains(self) or capo.artefactosObtenidos().size()>=2 )
        capo.artefactosObtenidos().filter({artefacto=>artefacto!=self}).max
         ({artefacto=>artefacto.estadisticaHechizeria(capo)+ artefacto.estadisticaLucha(capo)})
-            else self
+         
+            
+            
 	method estadisticaHechizeria(capo)=
 	//CORRECCION: Están usando self como un flag para decir "no hay mejor artefacto". 
 	//CORRECCION: más prolijo es preguntar exactmente eso: "si tiene artefactos (sin incluir self) entonces.."
-	   if(self.mejorArtefacto(capo)==self) 0 
-	   else self.mejorArtefacto(capo).estadisticaHechizeria(capo)
+	   if(! capo.artefactosObtenidos().filter({artefacto=>artefacto!=self}).isEmpty()) 
+	   self.mejorArtefacto(capo).estadisticaHechizeria(capo)
+	   else 0
 	   
 	method estadisticaLucha(capo)=
-	  if(self.mejorArtefacto(capo)==self) 0 
-	   else self.mejorArtefacto(capo).estadisticaLucha(capo)
+	  if(! capo.artefactosObtenidos().filter({artefacto=>artefacto!=self}).isEmpty()) 
+	   self.mejorArtefacto(capo).estadisticaLucha(capo)
+	   else 0
+	   
 	method efecto(capo){
 		capo.obtenerArtefacto(self)
 	}   
