@@ -12,15 +12,19 @@ class Bando{
 	}
 }
 //Elementos
-object cofrecitoDeOro{
+class CofrecitoDeOro{
+	var valor = 100
 	method efecto(capo){
-		capo.bando().incrementarTesoro(100)
+		capo.bando().incrementarTesoro(valor)
 	   }
 	}
-object cumuloDeCarbon{
+class CumuloDeCarbon{
 	method efecto(capo) {
 	 capo.bando().incrementarReserva(50)  
 	 }
+}
+object neblina{
+	
 }
 class ViejoSabio{
 	var puntosLucha = 1
