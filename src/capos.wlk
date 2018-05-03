@@ -38,6 +38,7 @@ class Capos{
 			 capo.muerte()
 		}else{
 			self.muerte()
+			game.removeVisual(self)
 		}
 	}
 	method efecto(capo){
@@ -53,11 +54,5 @@ class Capos{
 	}
 	 method llego(alguien) {
 		self.efecto(alguien)
-		game.removeVisual(self)
 	}
-}
-object capos{
-	var property rolando = new Capos(bando=bandos.bandoDelSur(),baseHechizeria=3,baseLucha=1,imagen="rolando.png",posicion=game.at(3,3))
-	var property caterina= new Capos(bando=bandos.bandoDelSur(),baseHechizeria=1,baseLucha=2,imagen="caterina.png",posicion=game.at(7,5))
-	var property archibaldo= new Capos(bando=bandos.bandoDelNorte(),baseHechizeria=3,baseLucha=3,imagen="archibaldo.png",posicion=game.at(1,8))
 }

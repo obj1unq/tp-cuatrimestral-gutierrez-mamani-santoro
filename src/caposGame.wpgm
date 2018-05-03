@@ -1,0 +1,40 @@
+import artefactos.*
+import capos.*
+import bandos.*
+import refuerzosArmadura.*
+import wollok.game.*
+program CaposGame {
+	var bandoDelSur= new Bando(tesoro=100,reservas=50)
+	var bandoDelNorte= new Bando(tesoro=200,reservas=200)
+	var rolando = new Capos(bando=bandoDelSur,baseHechizeria=3,baseLucha=1,imagen="rolando.png",posicion=game.at(3,3))
+	var caterina= new Capos(bando=bandoDelSur,baseHechizeria=1,baseLucha=2,imagen="caterina.png",posicion=game.at(7,5))
+	caterina.encontrarElemento(espadaDestino)
+	var archibaldo= new Capos(bando=bandoDelNorte,baseHechizeria=3,baseLucha=3,imagen="archibaldo.png",posicion=game.at(1,8))
+	var armadura= new Armadura(posicion=game.at(1.randomUpTo(5),1.randomUpTo(10)))
+	var gandalf= new ViejoSabio(posicion=game.at(1.randomUpTo(5),1.randomUpTo(10)))
+//	CONFIG	
+	game.title("Capos")
+	game.height(10)
+	game.width(10)
+	game.ground("piso.png")
+//	VISUALES
+    game.addVisual(rolando)
+	game.addVisual(caterina)
+	game.addVisual(archibaldo)
+	game.addVisual(libroHechizos)
+	game.addVisual(espadaDestino)
+	game.addVisual(collarDivino)
+	game.addVisual(armadura)
+	game.addVisual(espejoDivino)
+	game.addVisual(gandalf)  
+//	TECLADO
+
+	UP.onPressDo { rolando.move(rolando.posicion().up(1)) }
+	DOWN.onPressDo {rolando.move(rolando.posicion().down(1)) }
+	LEFT.onPressDo { rolando.move(rolando.posicion().left(1)) }
+	RIGHT.onPressDo { rolando.move(rolando.posicion().right(1)) }
+
+	game.whenCollideDo(rolando, { algo => algo.llego(rolando) })
+//	START
+	game.start()
+}

@@ -10,10 +10,6 @@ class Bando{
 		reservas += unaCantidad
 	}
 }
-object bandos{
-	var property bandoDelSur= new Bando(tesoro=100,reservas=50)
-	var property bandoDelNorte= new Bando(tesoro=200,reservas=200)
-}
 //Elementos
 class CofrecitoDeOro{
 	var valor = 100
