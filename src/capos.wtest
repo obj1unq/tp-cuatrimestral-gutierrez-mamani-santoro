@@ -155,9 +155,7 @@ test "rolando encuentra dos viejos sabios con valor de lucha 2"{
 	assert.equals(4,rolando.valorLucha())
 	assert.equals(7, rolando.valorHechizeria())
 }
-}
 test "caterina se ecuentra una neblina"{
-	 caterina.encontrarElemento(neblina)
-	 
+	 caterina.encontrarElemento(neblina)	 
 }
 }

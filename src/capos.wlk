@@ -8,6 +8,8 @@ class Capos{
     var artefactos=#{}
     var bando=null
     var vivo=true
+    var imagen=null
+    var property posicion=null
 	method valorBaseHechizeria()=baseHechizeria
 	method valorBaseLucha()=baseLucha
 	method artefactosObtenidos()=artefactos
@@ -46,4 +48,16 @@ class Capos{
       	self.peleaDeCapos(capo)
       }
 	}
+	method move(nuevaPosicion) {
+	  self.posicion(nuevaPosicion)
+	}
+	 method llego(alguien) {
+		self.efecto(alguien)
+		game.removeVisual(self)
+	}
+}
+object capos{
+	var property rolando = new Capos(bando=bandos.bandoDelSur(),baseHechizeria=3,baseLucha=1,imagen="rolando.png",posicion=game.at(3,3))
+	var property caterina= new Capos(bando=bandos.bandoDelSur(),baseHechizeria=1,baseLucha=2,imagen="caterina.png",posicion=game.at(7,5))
+	var property archibaldo= new Capos(bando=bandos.bandoDelNorte(),baseHechizeria=3,baseLucha=3,imagen="archibaldo.png",posicion=game.at(1,8))
 }

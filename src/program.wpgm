@@ -1,0 +1,37 @@
+import artefactos.*
+import capos.*
+import bandos.*
+import refuerzosArmadura.*
+import wollok.game.*
+/*describe "asd"{
+    var armaduraBendecida = new Armadura (refuerzo = bendicion)
+	var armaduraCotaDeMalla = new Armadura (refuerzo = cotaMalla)
+	var armaduraHechizada = new Armadura (refuerzo = bendicion)
+	var armaduraNormal = new Armadura (refuerzo = noRefuerzo)
+}*/
+program CaposGame {
+//	CONFIG	
+	game.title("Capos")
+	game.height(10)
+	game.width(10)
+	game.ground("suelo.png")
+//	VISUALES
+    game.addVisual(capos.rolando())
+	game.addVisual(capos.caterina())
+	game.addVisual(capos.archibaldo())
+	game.addVisual(libroHechizos)
+	game.addVisual(espadaDestino)
+	game.addVisual(collarDivino)
+	//game.addVisual(armadura)
+	game.addVisual(espejoDivino)
+//	TECLADO
+
+	UP.onPressDo { capos.rolando().move(capos.rolando().posicion().up(1)) }
+	DOWN.onPressDo { capos.rolando().move(capos.rolando().posicion().down(1)) }
+	LEFT.onPressDo { capos.rolando().move(capos.rolando().posicion().left(1)) }
+	RIGHT.onPressDo { capos.rolando().move(capos.rolando().posicion().right(1)) }
+
+	game.whenCollideDo(capos.rolando(), { algo => algo.llego(capos.rolando()) })
+//	START
+	game.start()
+}
