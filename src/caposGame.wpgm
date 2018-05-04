@@ -16,7 +16,7 @@ program CaposGame {
 	game.title("Capos")
 	game.height(10)
 	game.width(10)
-	game.ground("piso.png")
+	game.ground("suelo.png")
 //	VISUALES
     game.addVisual(rolando)
 	game.addVisual(caterina)

@@ -21,7 +21,7 @@ object libroHechizos{
 	method efecto(capo){
 		capo.obtenerArtefacto(self)
 	}
-	method imagen()="libroHechizos.png"
+	method imagen()="libro.png"
 	method llego(alguien) {
 		self.efecto(alguien)
 		game.removeVisual(self)
@@ -34,7 +34,7 @@ object collarDivino{
 	method efecto(capo){
 		capo.obtenerArtefacto(self)
 	}
-	method imagen()="collarDivino.png"
+	method imagen()="collar.png"
 	method llego(alguien) {
 		self.efecto(alguien)
 		game.removeVisual(self)
