@@ -13,7 +13,6 @@ class Bando{
 //Elementos
 class CofrecitoDeOro{
 	var valor = 100
-	var posicion=null
 	method efecto(capo){
 		capo.bando().incrementarTesoro(valor)
 	 }
@@ -24,7 +23,6 @@ class CofrecitoDeOro{
 	method imagen()="oro.png"
 }
 class CumuloDeCarbon{
-	var posicion=null
 	method efecto(capo) {
 	 capo.bando().incrementarReserva(50)  
 	 }
@@ -42,7 +40,6 @@ object neblina{
 }
 class ViejoSabio{
 	var puntosLucha = 1
-	var posicion=null
 	    method efecto(capo){
         capo.incrementarValorBaseHechizeria(ayudanteSabio.ayuda())
         

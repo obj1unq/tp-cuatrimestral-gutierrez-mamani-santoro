@@ -10,8 +10,8 @@ program CaposGame {
 	var caterina= new Capos(bando=bandoDelSur,baseHechizeria=1,baseLucha=2,imagen="caterina.png",posicion=game.at(7,5))
 	caterina.encontrarElemento(espadaDestino)
 	var archibaldo= new Capos(bando=bandoDelNorte,baseHechizeria=3,baseLucha=3,imagen="archibaldo.png",posicion=game.at(1,8))
-	var armadura= new Armadura(posicion=game.at(1.randomUpTo(5),1.randomUpTo(10)))
-	var gandalf= new ViejoSabio(posicion=game.at(1.randomUpTo(5),1.randomUpTo(10)))
+	var armadura= new Armadura()
+	var gandalf= new ViejoSabio()
 //	CONFIG	
 	game.title("Capos")
 	game.height(10)
@@ -21,12 +21,12 @@ program CaposGame {
     game.addVisual(rolando)
 	game.addVisual(caterina)
 	game.addVisual(archibaldo)
-	game.addVisual(libroHechizos)
-	game.addVisual(espadaDestino)
-	game.addVisual(collarDivino)
-	game.addVisual(armadura)
-	game.addVisual(espejoDivino)
-	game.addVisual(gandalf)  
+	game.addVisualIn(libroHechizos,game.at(1.randomUpTo(1),1.randomUpTo(10)))
+	game.addVisualIn(espadaDestino,game.at(1.randomUpTo(2),1.randomUpTo(10)))
+	game.addVisualIn(collarDivino,game.at(1.randomUpTo(3),1.randomUpTo(10)))
+	game.addVisualIn(armadura,game.at(1.randomUpTo(4),1.randomUpTo(10)))
+	game.addVisualIn(espejoDivino,game.at(1.randomUpTo(5),1.randomUpTo(10)))
+	game.addVisualIn(gandalf,game.at(1.randomUpTo(6),1.randomUpTo(10)))  
 //	TECLADO
 
 	UP.onPressDo { rolando.move(rolando.posicion().up(1)) }

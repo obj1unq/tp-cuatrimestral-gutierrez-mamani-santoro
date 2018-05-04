@@ -8,7 +8,7 @@ class Capos{
     var artefactos=#{}
     var bando=null
     var vivo=true
-    var imagen=null
+    var property imagen=null
     var property posicion=null
 	method valorBaseHechizeria()=baseHechizeria
 	method valorBaseLucha()=baseLucha
