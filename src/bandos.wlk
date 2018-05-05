@@ -32,11 +32,16 @@ class CumuloDeCarbon{
 	}
 	method imagen()="carbon.png"
 }
-object neblina{
+class Neblina{
  var elementosOcultos = []
   method efecto(capo){
   	  elementosOcultos.forEach({elemento=>capo.encontrarElemento(elemento)})
   }
+  method imagen() = "neblina.png"
+  method llego(alguien) {
+		self.efecto(alguien)
+		game.removeVisual(self)
+	}
 }
 class ViejoSabio{
 	var puntosLucha = 1

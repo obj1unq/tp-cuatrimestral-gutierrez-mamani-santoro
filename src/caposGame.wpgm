@@ -12,6 +12,7 @@ program CaposGame {
 	var archibaldo= new Capos(bando=bandoDelNorte,baseHechizeria=3,baseLucha=3,imagen="archibaldo.png",posicion=game.at(1,8))
 	var armadura= new Armadura()
 	var gandalf= new ViejoSabio()
+	var neblina = new Neblina()
 //	CONFIG	
 	game.title("Capos")
 	game.height(10)
@@ -27,6 +28,7 @@ program CaposGame {
 	game.addVisualIn(armadura,game.at(1.randomUpTo(4),1.randomUpTo(10)))
 	game.addVisualIn(espejoDivino,game.at(1.randomUpTo(5),1.randomUpTo(10)))
 	game.addVisualIn(gandalf,game.at(1.randomUpTo(6),1.randomUpTo(10)))  
+	game.addVisualIn(neblina,game.at(1.randomUpTo(6),1.randomUpTo(10)))
 //	TECLADO
 
 	UP.onPressDo { rolando.move(rolando.posicion().up(1)) }
