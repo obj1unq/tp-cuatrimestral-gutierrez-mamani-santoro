@@ -10,6 +10,8 @@ program CaposGame {
 	var caterina= new Capos(bando=bandoDelSur,baseHechizeria=1,baseLucha=2,imagen="caterina.png",posicion=game.at(7,5))
 	caterina.encontrarElemento(espadaDestino)
 	var archibaldo= new Capos(bando=bandoDelNorte,baseHechizeria=3,baseLucha=3,imagen="archibaldo.png",posicion=game.at(1,8))
+	archibaldo.encontrarElemento(espadaDestino)
+	archibaldo.encontrarElemento(collarDivino)
 	var armadura= new Armadura()
 	var gandalf= new ViejoSabio()
 	var neblina = new Neblina()

@@ -36,15 +36,18 @@ class Capos{
 	method peleaDeCapos(capo){
 		if(self.valorFinal()>capo.valorFinal()){
 			 capo.muerte()
+			 game.stop()
 		}else{
 			self.muerte()
 			game.removeVisual(self)
+			game.say(capo,"Que debil")
 		}
 	}
 	method efecto(capo){
       if(self.bando()==capo.bando()){
       	 artefactos.forEach({artefacto=>capo.encontrarElemento(artefacto)})
       	 artefactos.clear()
+      	 game.say(capo,"Gracias")
       }else{
       	self.peleaDeCapos(capo)
       }
