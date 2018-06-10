@@ -51,6 +51,8 @@ class ViejoSabio{
 	    capo.incrementarValorBaseLucha(puntosLucha)
        }
        method imagen()="viejoSabio.png"
+       
+       // TODO Ahora que sabemos herencia podemos evitar esta duplicación.
        method llego(alguien) {
 		self.efecto(alguien)
 		game.removeVisual(self)
