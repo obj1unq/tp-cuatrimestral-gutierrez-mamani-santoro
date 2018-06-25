@@ -6,10 +6,10 @@ import wollok.game.*
 program CaposGame {
 	var bandoDelSur= new Bando(tesoro=100,reservas=50)
 	var bandoDelNorte= new Bando(tesoro=200,reservas=200)
-	var rolando = new Capos(bando=bandoDelSur,baseHechizeria=3,baseLucha=1,imagen="rolando.png",posicion=game.at(3,3))
-	var caterina= new Capos(bando=bandoDelSur,baseHechizeria=1,baseLucha=2,imagen="caterina.png",posicion=game.at(7,5))
+	var rolando = new Capos(bando=bandoDelSur,baseHechiceria=3,baseLucha=1,imagen="rolando.png",posicion=game.at(3,3))
+	var caterina= new Capos(bando=bandoDelSur,baseHechiceria=1,baseLucha=2,imagen="caterina.png",posicion=game.at(7,5))
 	caterina.encontrarElemento(espadaDestino)
-	var archibaldo= new Capos(bando=bandoDelNorte,baseHechizeria=3,baseLucha=3,imagen="archibaldo.png",posicion=game.at(1,8))
+	var archibaldo= new Capos(bando=bandoDelNorte,baseHechiceria=3,baseLucha=3,imagen="archibaldo.png",posicion=game.at(1,8))
 	archibaldo.encontrarElemento(espadaDestino)
 	archibaldo.encontrarElemento(collarDivino)
 	var armadura= new Armadura()

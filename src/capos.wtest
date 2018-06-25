@@ -5,12 +5,12 @@ import refuerzosArmadura.*
 describe "tp1"{
 	var bandoDelSur= new Bando(tesoro=100,reservas=50)
 	var bandoDelNorte= new Bando(tesoro=200,reservas=200)
-	var rolando = new Capos(bando=bandoDelSur,baseHechizeria=3,baseLucha=1)
-	var caterina= new Capos(bando=bandoDelSur,baseHechizeria=1,baseLucha=2)
-	var archibaldo= new Capos(bando=bandoDelNorte,baseHechizeria=3,baseLucha=3)
+	var rolando = new Capos(bando=bandoDelSur,baseHechiceria=3,baseLucha=1)
+	var caterina= new Capos(bando=bandoDelSur,baseHechiceria=1,baseLucha=2)
+	var archibaldo= new Capos(bando=bandoDelNorte,baseHechiceria=3,baseLucha=3)
 	var armaduraBendecida = new Armadura (refuerzo = bendicion)
 	var armaduraCotaDeMalla = new Armadura (refuerzo = cotaMalla)
-	var armaduraHechizada = new Armadura (refuerzo = bendicion)
+	var armaduraHechizada = new Armadura (refuerzo = hechizo)
 	var armaduraNormal = new Armadura (refuerzo = noRefuerzo)
 	var viejoSabio = new ViejoSabio (puntosLucha = 1)
 	var viejaSabia = new ViejoSabio (puntosLucha = 2)
@@ -25,12 +25,12 @@ fixture{
 
 test "rolando incrementa su valor de base de hechiceria y obtiene artefactos" {
 	
-	rolando.incrementarValorBaseHechizeria(1)
+	rolando.incrementarValorBaseHechiceria(1)
 	rolando.obtenerArtefacto(collarDivino)
 	rolando.obtenerArtefacto(libroHechizos)
 	rolando.obtenerArtefacto(espadaDestino)
 	assert.equals(5,rolando.valorLucha())
-	assert.equals(9,rolando.valorHechizeria())
+	assert.equals(9,rolando.valorHechiceria())
 	
 }
 test "rolando aumenta sus puntos de fuerza base y obtiene artefactos" {
@@ -40,23 +40,23 @@ test "rolando aumenta sus puntos de fuerza base y obtiene artefactos" {
     rolando.obtenerArtefacto(espadaDestino)
 	rolando.obtenerArtefacto(collarDivino)
 	assert.equals(7,rolando.valorLucha())
-	assert.equals(4,rolando.valorHechizeria())
+	assert.equals(4,rolando.valorHechiceria())
 	
 }
 
 test "rolando incrementa su valor base de hechiceria y incrementa su valor hechiceria con artefactos obtenitos" {
 	
-	rolando.incrementarValorBaseHechizeria(1)
+	rolando.incrementarValorBaseHechiceria(1)
 	rolando.obtenerArtefacto(collarDivino)
 	rolando.obtenerArtefacto(libroHechizos)
 	rolando.obtenerArtefacto(espadaDestino)
     rolando.obtenerArtefacto(espejoDivino)
-    assert.equals(13,rolando.valorHechizeria())
+    assert.equals(13,rolando.valorHechiceria())
     
 }
 test "rolando incrementa su valor base de hechiceria y incremeta su valor lucha con artefactos obtenidos" {
 	
-	rolando.incrementarValorBaseHechizeria(1)
+	rolando.incrementarValorBaseHechiceria(1)
 	rolando.obtenerArtefacto(collarDivino)
 	rolando.obtenerArtefacto(libroHechizos)
 	rolando.obtenerArtefacto(espadaDestino)
@@ -64,20 +64,19 @@ test "rolando incrementa su valor base de hechiceria y incremeta su valor lucha 
     assert.equals(5,rolando.valorLucha())
     
 }
-test "testeo del punto 2.2 con la armadura con el hechizo viendo el valor hechizeria final cuando de base tiene 4" {
+test "testeo del punto 2.2 con la armadura con el hechizo viendo el valor Hechiceria" {
 	
-	rolando.incrementarValorBaseHechizeria(1)
-	rolando.incrementarValorBaseHechizeria(1)
-	rolando.incrementarValorBaseHechizeria(1)
+	rolando.incrementarValorBaseHechiceria(1)
+	rolando.incrementarValorBaseHechiceria(1)
+	rolando.incrementarValorBaseHechiceria(1)
 	rolando.obtenerArtefacto(armaduraBendecida)
-	rolando.obtenerArtefacto(espadaDestino)
 	rolando.obtenerArtefacto(espejoDivino)
-    assert.equals(10,rolando.valorHechizeria())
+    assert.equals(8,rolando.valorHechiceria())
     
 }
 test "testeo del punto 2.2 con la armadura viendo el valor lucha" {
 	
-	rolando.incrementarValorBaseHechizeria(1)
+	rolando.incrementarValorBaseHechiceria(1)
 	rolando.obtenerArtefacto(armaduraHechizada)
 	rolando.obtenerArtefacto(espadaDestino)
 	rolando.obtenerArtefacto(espejoDivino)
@@ -87,8 +86,8 @@ test "testeo del punto 2.2 con la armadura viendo el valor lucha" {
 test "rolando encuentra un viejo sabio" {
 	
 	rolando.encontrarElemento(viejoSabio)
-	assert.equals(rolando.valorBaseHechizeria(),4)
-	assert.equals(rolando.valorBaseLucha(),2)
+	assert.equals(rolando.baseHechiceria(),4)
+	assert.equals(rolando.baseLucha(),2)
     
 }
 test "rolando encuentra 2 cofrecitos de oro y le suma 200 al tesoro del sur " {
@@ -115,19 +114,19 @@ test "rolando encuentra 1 cofecito de oror y un cumulo de carbon "{
 	assert.equals(200,bandoDelSur.tesoro())
 	
 }
-test "rolando contra archibaldo"{
-	rolando.encontrarElemento(archibaldo)
-	assert.that(!rolando.estadoMio())
-}
-test "rolando encontro caterina"{
-	rolando.encontrarElemento(caterina)
-	assert.equals(3,rolando.valorHechizeria())
-	assert.equals(4,rolando.valorLucha())
-}
+//test "rolando contra archibaldo"{
+//	rolando.encontrarElemento(archibaldo)
+//	assert.notThat(rolando.estaVivo())
+//}
+//test "rolando encontro caterina"{
+//	rolando.encontrarElemento(caterina)
+//	assert.equals(3,rolando.valorHechiceria())
+//	assert.equals(4,rolando.valorLucha())
+//}
 
 test "rolando encuentra armadura bendecida"{
 	rolando.encontrarElemento(armaduraBendecida)
-	assert.equals(4,rolando.valorHechizeria())
+	assert.equals(4,rolando.valorHechiceria())
 	assert.equals(3,rolando.valorLucha())
 }
 
@@ -137,15 +136,16 @@ test "rolando encuentra armadura cota de malla"{
 }
 
 test "rolando encuentra armadura hechizada"{
+	rolando.incrementarValorBaseHechiceria(1)
 	rolando.encontrarElemento(armaduraHechizada)
-	assert.equals(4,rolando.valorHechizeria())
+	assert.equals(6,rolando.valorHechiceria())
 }
 
 test "rolando encuentra una de cada armadura"{
 	rolando.encontrarElemento(armaduraBendecida)
 	rolando.encontrarElemento(armaduraCotaDeMalla)
 	rolando.encontrarElemento(armaduraHechizada)
-	assert.equals(5, rolando.valorHechizeria())
+	assert.equals(4, rolando.valorHechiceria())
 	assert.equals(8, rolando.valorLucha())
 }
 
@@ -153,6 +153,6 @@ test "rolando encuentra dos viejos sabios con valor de lucha 2"{
 	rolando.encontrarElemento(viejoSabio)
 	rolando.encontrarElemento(viejaSabia)
 	assert.equals(4,rolando.valorLucha())
-	assert.equals(7, rolando.valorHechizeria())
+	assert.equals(5, rolando.valorHechiceria())
  }
 }

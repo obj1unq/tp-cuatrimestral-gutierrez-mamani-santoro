@@ -1,78 +1,48 @@
 import refuerzosArmadura.*
 import bandos.*
 import capos.*
-object espadaDestino{
-	method estadisticaHechizeria(capo)=0
-	method estadisticaLucha(capo)=3
+class Artefacto {
 	method efecto(capo){
 		capo.obtenerArtefacto(self)
 	}
+	method llego(alguien) {
+		self.efecto(alguien)
+		game.removeVisual(self)
+	}
+}
+object espadaDestino inherits Artefacto{
+	method valorHechiceria(capo)=0
+	method valorLucha(capo)=3
 	method imagen()="espadaDestino.png"
-	method llego(alguien) {
-		self.efecto(alguien)
-		game.removeVisual(self)
-	}
 }
-object libroHechizos{
-	method estadisticaHechizeria(capo)=capo.valorBaseHechizeria()
-	method estadisticaLucha(capo)=0
-	method efecto(capo){
-		capo.obtenerArtefacto(self)
-	}
+object libroHechizos inherits Artefacto{
+	method valorHechiceria(capo)=capo.baseHechiceria()
+	method valorLucha(capo)=0
 	method imagen()="libro.png"
-	method llego(alguien) {
-		self.efecto(alguien)
-		game.removeVisual(self)
-	}
 }
-object collarDivino{
-	method estadisticaHechizeria(capo)=1
-	method estadisticaLucha(capo)=1
-	method efecto(capo){
-		capo.obtenerArtefacto(self)
-	}
+object collarDivino inherits Artefacto{
+	method valorHechiceria(capo)=1
+	method valorLucha(capo)=1
 	method imagen()="collar.png"
-	method llego(alguien) {
-		self.efecto(alguien)
-		game.removeVisual(self)
-	}
 }
-class Armadura{
+class Armadura inherits Artefacto{
 	var property refuerzo=cotaMalla
-	method estadisticaHechizeria(capo)=refuerzo.estadisticaHechizeria(capo)
-	method estadisticaLucha(capo)=2+ refuerzo.estadisticaLucha(capo)
-	
-	method efecto(capo){
-		capo.obtenerArtefacto(self)
-	}
+	method valorHechiceria(capo)=refuerzo.valorHechiceria(capo)
+	method valorLucha(capo)=2+ refuerzo.valorLucha(capo)
 	method imagen()="armadura.png"
-	method llego(alguien) {
-		self.efecto(alguien)
-		game.removeVisual(self)
-	}
 }
-object espejoDivino{
-	method mejorArtefacto(capo)= 
-    //CORRECCION: Si se hace la pregunta correcta antes de llamar al mejor artefacto, el if se vuelve innecesario
-       capo.artefactosObtenidos().filter({artefacto=>artefacto!=self}).max
-        ({artefacto=>artefacto.estadisticaHechizeria(capo)+ artefacto.estadisticaLucha(capo)})
+object espejoDivino inherits Artefacto{
+	method mejorArtefacto(capo)=
+       capo.artefactos().filter({artefacto=>artefacto!=self}).max
+        ({artefacto=>artefacto.valorHechiceria(capo)+ artefacto.valorLucha(capo)})
                    
-	method estadisticaHechizeria(capo)=
-	//CORRECCION: Están usando self como un flag para decir "no hay mejor artefacto". 
-	//CORRECCION: más prolijo es preguntar exactmente eso: "si tiene artefactos (sin incluir self) entonces.."
-	   if(not capo.artefactosObtenidos().filter({artefacto=>artefacto!=self}).isEmpty())
-	      self.mejorArtefacto(capo).estadisticaHechizeria(capo) else 0
+	method valorHechiceria(capo)=
+	   if(not capo.artefactos().filter({artefacto=>artefacto!=self}).isEmpty())
+	      self.mejorArtefacto(capo).valorHechiceria(capo) else 0
 	   
-	method estadisticaLucha(capo)=
-	  if(not capo.artefactosObtenidos().filter({artefacto=>artefacto!=self}).isEmpty())
-	      self.mejorArtefacto(capo).estadisticaLucha(capo) else 0
-	
-	method efecto(capo){
-		capo.obtenerArtefacto(self)
-	}  
+	method valorLucha(capo)=
+	  if(not capo.artefactos().filter({artefacto=>artefacto!=self}).isEmpty())
+	      self.mejorArtefacto(capo).valorLucha(capo) else 0
+	      
 	method imagen()="espejoDivino.png" 
-	method llego(alguien) {
-		self.efecto(alguien)
-		game.removeVisual(self)
-	}
 }
